@@ -42,8 +42,5 @@ class Application < Sinatra::Application
   end
 end
 
-get '/' do
-  erb :index, locals: { :messages => @messages.get_messages}
-end
 
 
