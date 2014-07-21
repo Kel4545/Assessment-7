@@ -16,7 +16,7 @@ class Application < Sinatra::Application
 
   get '/' do
    other_users = @users_table.find
-    erb :index, locals: {:other_users: other_users}
+    erb :index, locals: {other_users: other_users}
   end
 
 
