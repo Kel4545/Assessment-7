@@ -11,20 +11,18 @@ class Application < Sinatra::Application
     @users_table = UsersTable.new(GschoolDatabaseConnection::DatabaseConnection.establish(ENV["RACK_ENV"]))
   end
 
+#Done after time was up
 
   get '/' do
-    erb :index
+   other_users = @users_table.find
+    erb :index, :locals{:other_users :other_users}
   end
 
-  get '/homepage' do
-      erb :homepage, locals: {:other_users :other_users}
-    end
-  end
 
   post '/homepage' do
-    @users_table.create(params[:username], params[:message])
+   @users_table.create(params[:username], params[:message])
     end
-    redirect '/'
+    redirect "/"
 
 
   get '/continents' do
@@ -40,12 +38,5 @@ class Application < Sinatra::Application
 
 
 # WHY DO I KEEP MAKING THINGS FAR MOR COMPLICATED THAN THEY ACTUALLY ARE?
-#This is what I should have done:
-# get '/' do
-#  erb :index, :locals { :other_users  :@other_users}
-# end
-
-# post "/homepage" do
-# @users_table.create(params[:username], params[:message])
-# redirect "/"
+# Was trying to do the whole thing with sessions
 

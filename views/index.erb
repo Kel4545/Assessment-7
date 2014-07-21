@@ -2,3 +2,39 @@
 
 <p>We show totally accurate lists of continents and countries!!</p>
 
+<form action="/homepage" method="post">
+  <div>
+    <label for="username">userame</label>
+    <input type="text" name="username" id="username"/>
+  </div>
+  <div>
+    <label for="Message">Message</label>
+    <input type="Message" name="Message" id="Message"/>
+  </div>
+  <div>
+    <input type="submit" value="Add Message"/>
+  </div>
+</form>
+
+
+
+<table id="Message Table">
+  <thead>
+  <tr>
+    <td>Username</td>
+    <td>Message</td>
+  </tr>
+  </thead>
+  <tbody>
+  <% other_users.each do |user_hash| %>
+    <tr>
+      <td><%= user_hash["username"] %></td>
+      <td>
+        <% other_users.each do |user_hash| %>
+        <td><%= user_hash["message"] %></td>
+        </td>
+        </tr>
+      <% end %>
+      </tbody>
+      </table>
+
