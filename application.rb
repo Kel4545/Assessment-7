@@ -17,20 +17,15 @@ class Application < Sinatra::Application
   end
 
   get '/homepage' do
-    if session[:id]
       erb :homepage, locals: {:other_users :other_users}
-    else
-      erb :homepage
     end
   end
 
   post '/homepage' do
     @users_table.create(params[:username], params[:message])
-    if user
-      session[:id] = user ["id"]
     end
     redirect '/'
-  end
+
 
   get '/continents' do
     all_continents = CountryList.new.continents
@@ -41,7 +36,7 @@ class Application < Sinatra::Application
     list_of_countries = CountryList.new.countries_for_continent(params[:continent_name])
     erb :countries, locals: {countries: list_of_countries, continent: params[:continent_name]}
   end
-end
+
 
 
 
