@@ -39,7 +39,7 @@ class Application < Sinatra::Application
 
 
 
-
+# WHY DO I KEEP MAKING THINGS FAR MOR COMPLICATED THAN THEY ACTUALLY ARE?
 #This is what I should have done:
 # get '/' do
 #  erb :index, :locals { :other_users  :@other_users}
