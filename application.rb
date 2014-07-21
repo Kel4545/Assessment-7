@@ -17,7 +17,7 @@ class Application < Sinatra::Application
 
   get '/homepage' do
     if session[:id]
-      erb :message_page, locals: {other_users: other_users}
+      erb :homepage, locals: {other_users: other_users}
     else
       erb :homepage
     end
@@ -25,11 +25,10 @@ class Application < Sinatra::Application
 
   post '/homepage' do
     @users_table.create(params[:username], params[:message])
-    user = @users_table.find_by(params[:username], params[:message])
     if user
       session[:id] = user ["id"]
     end
-    redirect '/homepage'
+    redirect '/'
   end
 
   get '/continents' do
@@ -41,6 +40,10 @@ class Application < Sinatra::Application
     list_of_countries = CountryList.new.countries_for_continent(params[:continent_name])
     erb :countries, locals: {countries: list_of_countries, continent: params[:continent_name]}
   end
+end
+
+get '/' do
+  erb :index, locals: { :messages => @messages.get_messages}
 end
 
 
