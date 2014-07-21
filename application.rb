@@ -11,6 +11,7 @@ class Application < Sinatra::Application
     @users_table = UsersTable.new(GschoolDatabaseConnection::DatabaseConnection.establish(ENV["RACK_ENV"]))
   end
 
+
   get '/' do
     erb :index
   end
@@ -43,4 +44,13 @@ class Application < Sinatra::Application
 end
 
 
+
+#This is what I should have done:
+# get '/' do
+#  erb :index, :locals { :messages => @messages.get_messages}
+# end
+
+# post "/homepage" do
+# @users_table.create(params[:username], params[:message])
+# redirect "/"
 

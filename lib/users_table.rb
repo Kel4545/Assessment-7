@@ -10,8 +10,4 @@ class UsersTable
   def find(id)
     @database_connection.sql("SELECT * from users where id = #{id}").first
   end
-
-  def message(id)
-    @database_connection.sql("SELECT id, username, message  FROM users WHERE id <> '#{id}'")
-  end
-  end
+end
