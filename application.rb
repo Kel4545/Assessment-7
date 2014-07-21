@@ -12,18 +12,18 @@ class Application < Sinatra::Application
   end
 
 #Done after time was up
+ # This is what it should look like
 
   get '/' do
    other_users = @users_table.find
-    erb :index, :locals{:other_users :other_users}
+    erb :index, locals: {:other_users: other_users}
   end
 
 
-  post '/homepage' do
+  post '/messages' do
    @users_table.create(params[:username], params[:message])
-    end
     redirect "/"
-
+end
 
   get '/continents' do
     all_continents = CountryList.new.continents
@@ -34,7 +34,7 @@ class Application < Sinatra::Application
     list_of_countries = CountryList.new.countries_for_continent(params[:continent_name])
     erb :countries, locals: {countries: list_of_countries, continent: params[:continent_name]}
   end
-
+end
 
 
 # WHY DO I KEEP MAKING THINGS FAR MOR COMPLICATED THAN THEY ACTUALLY ARE?
