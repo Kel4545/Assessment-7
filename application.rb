@@ -17,11 +17,10 @@ class Application < Sinatra::Application
 
   get '/homepage' do
     if session[:id]
-      erb :message_page, locals: {user: user, other_users: other_users}
+      erb :message_page, locals: {other_users: other_users}
     else
       erb :homepage
     end
-    erb :homepage
   end
 
   post '/homepage' do
