@@ -1,0 +1,21 @@
+<h1>Welcome, <%= user["username"] %></h1>
+
+<table id="Message Table">
+  <thead>
+  <tr>
+    <td>Username</td>
+    <td>Message</td>
+  </tr>
+  </thead>
+  <tbody>
+  <% other_users.each do |user_hash| %>
+    <tr>
+      <td><%= user_hash["username"] %></td>
+      <td>
+        <% other_users.each do |user_hash| %>
+        <td><%= user_hash["message"] %></td>
+        </td>
+        </tr>
+      <% end %>
+      </tbody>
+      </table>
