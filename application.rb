@@ -18,7 +18,7 @@ class Application < Sinatra::Application
 
   get '/homepage' do
     if session[:id]
-      erb :homepage, locals: {other_users: other_users}
+      erb :homepage, locals: {:other_users :other_users}
     else
       erb :homepage
     end
@@ -47,7 +47,7 @@ end
 
 #This is what I should have done:
 # get '/' do
-#  erb :index, :locals { :messages => @messages.get_messages}
+#  erb :index, :locals { :other_users  :@other_users}
 # end
 
 # post "/homepage" do
